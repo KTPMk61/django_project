@@ -33,6 +33,13 @@ def login(request):
             data = Student.objects.all()
             for s in data:
                 if s.username == user and s.password == password:
-                    return render(request,'pages/student.html')
+                    score = Student.objects.get(id=s.id)
+                    return render(request,'pages/student.html',{'score':score})
             return render(request,'pages/fail1.html')
     return render(request,'pages/login.html',{'form': form})
+def viewscore(request,id):
+    score = Student.objects.get(id =id)
+    return render(request,'pages/viewscore.html',{'score':score})
+def viewscore1(request,id):
+    score = Student.objects.get(id =id)
+    return render(request,'pages/viewscore.html',{'score':score})

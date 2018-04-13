@@ -6,4 +6,6 @@ class Student(models.Model):
     score = models.IntegerField()
     def __str__(self):
         return self.fullname
+    def __str__(self):
+        return self.username
 # Create your models here.
