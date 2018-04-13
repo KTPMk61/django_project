@@ -2,10 +2,10 @@ from django import forms
 import re
 from .models import Student
 class RegistrationForm(forms.Form):
-    fullname = forms.CharField(label = 'Ho Ten', max_length= 30)
+    fullname = forms.CharField(label = 'Họ Tên', max_length= 30)
     sid = forms.CharField(label='MSSV', max_length=30)
-    username = forms.CharField(label = 'Tai khoan', max_length= 30)
-    password =  forms.CharField(label= 'Mat khau',widget= forms.PasswordInput())
+    username = forms.CharField(label = 'Tài khoản', max_length= 30)
+    password =  forms.CharField(label= 'Mật khẩu',widget= forms.PasswordInput())
     def save(self):
         fullname = self.cleaned_data['fullname']
         username = self.cleaned_data['username']
@@ -14,5 +14,5 @@ class RegistrationForm(forms.Form):
         s = Student(username = username, password = password, fullname= fullname,score= 0,sid= sid)
         s.save()
 class LoginForm(forms.Form):
-    username = forms.CharField(label = 'Tai khoan', max_length= 30)
-    password =  forms.CharField(label= 'Mat khau',widget= forms.PasswordInput())
+    username = forms.CharField(label = 'Tài khoản', max_length= 30)
+    password =  forms.CharField(label= 'Mật khẩu',widget= forms.PasswordInput())
