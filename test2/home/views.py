@@ -41,4 +41,8 @@ def login(request):
 def viewscore(request,id):
     score = Student.objects.get(id =id)
     return render(request,'pages/viewscore.html',{'score':score})
+def viewclass(request,id):
+    score = Student.objects.get(id=id)
+    data = {'data':Student.objects.all(),'score':score}
+    return render(request,'pages/viewclass.html',data)
 
