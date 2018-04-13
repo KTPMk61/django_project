@@ -1,0 +1,24 @@
+{% extends "pages/base.html" %}
+{% block title %} home {% endblock%}
+{% block content %}
+<br>
+<div>
+    <center>
+        <h1 style="font-size:60px">
+            Student Manager
+        </h1>
+    </center>
+</div>
+   <center>
+        <form action= '.' method='POST'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type = "submit" value = "Dang ki" />
+        </form>
+       {% for s in data%}
+            {{s.username}}
+            <br>
+       {% endfor%}
+   </center>
+</div>
+{% endblock %}}
