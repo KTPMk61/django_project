@@ -9,7 +9,7 @@ class RegistrationForm(forms.Form):
         fullname = self.cleaned_data['fullname']
         username = self.cleaned_data['username']
         password = self.cleaned_data['password']
-        s = Student(username = username, password = password, fullname= fullname)
+        s = Student(username = username, password = password, fullname= fullname,score= 0)
         s.save()
 class LoginForm(forms.Form):
     username = forms.CharField(label = 'Tai khoan', max_length= 30)
