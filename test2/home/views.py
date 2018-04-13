@@ -4,8 +4,9 @@ from .forms import RegistrationForm,LoginForm
 from .models import Student
 def index(request):
     return render(request,'pages/home.html')
-def student(request):
-    return render(request,'pages/student.html')
+def student(request,id):
+    score = Student.objects.get(id=id)
+    return render(request, 'pages/student.html', {'score': score})
 def teacher(request):
     return render(request,'pages/teacher.html')
 def reg(request):
@@ -40,6 +41,4 @@ def login(request):
 def viewscore(request,id):
     score = Student.objects.get(id =id)
     return render(request,'pages/viewscore.html',{'score':score})
-def viewscore1(request,id):
-    score = Student.objects.get(id =id)
-    return render(request,'pages/viewscore.html',{'score':score})
+
