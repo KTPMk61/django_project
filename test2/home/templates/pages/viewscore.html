@@ -2,8 +2,11 @@
 {% block title %} student {% endblock%}
 {% block content %}
 <center>
-    <h3> Ten : Diem<h3>
-    <h3>{{score.fullname}}: {{score.score}} </h3>
+    <h3>Họ Và Tên :{{score.fullname}}</h3>
+    <h3>MSSV: {{score.sid}}</h3>
+    <h3>Khoa/Viện :{{score.khoa}}</h3>
+    <h3>Ngày Sinh : {{score.bir|date:"d/m/Y"}}</h3>
+    <h3>Điểm : {{score.score}}</h3>
 </center>
 <center><a href="/student/{{score.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
 {% endblock %}}

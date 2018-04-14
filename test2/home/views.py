@@ -1,14 +1,15 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect,HttpResponse
 from .forms import RegistrationForm,LoginForm
-from .models import Student
+from .models import Student,Teacher
 def index(request):
     return render(request,'pages/home.html')
 def student(request,id):
     score = Student.objects.get(id=id)
     return render(request, 'pages/student.html', {'score': score})
-def teacher(request):
-    return render(request,'pages/teacher.html')
+def teacher(request,id):
+    teacher = Teacher.objects.get(id=id)
+    return render(request,'pages/teacher.html',{'teacher':teacher})
 def reg(request):
     form= RegistrationForm()
     if request.method == 'POST':
@@ -36,6 +37,11 @@ def login(request):
                 if s.username == user and s.password == password:
                     score = Student.objects.get(id=s.id)
                     return render(request,'pages/student.html',{'score':score})
+            tc = Teacher.objects.all()
+            for s in tc:
+                if s.username == user and s.password == password:
+                    teacher = Teacher.objects.get(id = s.id)
+                    return render(request,'pages/teacher.html',{'teacher':teacher})
             return render(request,'pages/fail1.html')
     return render(request,'pages/login.html',{'form': form})
 def viewscore(request,id):
@@ -45,4 +51,10 @@ def viewclass(request,id):
     score = Student.objects.get(id=id)
     data = {'data':Student.objects.all(),'score':score}
     return render(request,'pages/viewclass.html',data)
-
+def viewinf(request,id):
+    teacher = Teacher.objects.get(id = id)
+    return render(request,'pages/viewinf.html',{'teacher':teacher})
+def viewclasst(request,id):
+    teacher= Teacher.objects.get(id = id)
+    data = {'data':Student.objects.all(),'teacher':teacher}
+    return render(request,'pages/viewclasst.html',data)

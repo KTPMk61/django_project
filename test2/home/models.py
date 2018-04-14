@@ -14,4 +14,12 @@ class Student(models.Model):
         return self.username
     def __str__(self):
         return self.sid
+class Teacher(models.Model):
+    username = models.CharField(max_length=30,default='admin')
+    password = models.CharField(max_length=20)
+    fullname = models.CharField(max_length=30)
+    email = models.CharField(max_length=20)
+    khoa = models.CharField(max_length=30)
+    bir = models.DateTimeField()
+
 # Create your models here.
