@@ -8,5 +8,12 @@
     <h3>Ngày Sinh : {{score.bir|date:"d/m/Y"}}</h3>
     <h3>Điểm : {{score.score}}</h3>
 </center>
+<center>
+        <form method='POST' action='.'>
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type = "submit" value = "Đăngg nhập" />
+        </form>
+   </center>
 <center><a href="/student/{{score.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
 {% endblock %}}

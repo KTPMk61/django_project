@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect,HttpResponse
-from .forms import RegistrationForm,LoginForm
+from .forms import RegistrationForm,LoginForm,UpdateScore
+from django.forms.models import modelformset_factory
 from .models import Student,Teacher
 def index(request):
     return render(request,'pages/home.html')
@@ -46,7 +47,9 @@ def login(request):
     return render(request,'pages/login.html',{'form': form})
 def viewscore(request,id):
     score = Student.objects.get(id =id)
-    return render(request,'pages/viewscore.html',{'score':score})
+    form = ViewForm()
+    args ={'score':score,'form':form}
+    return render(request,'pages/viewscore.html',args)
 def viewclass(request,id):
     score = Student.objects.get(id=id)
     data = {'data':Student.objects.all(),'score':score}
@@ -58,3 +61,13 @@ def viewclasst(request,id):
     teacher= Teacher.objects.get(id = id)
     data = {'data':Student.objects.all(),'teacher':teacher}
     return render(request,'pages/viewclasst.html',data)
+def update(request,id):
+    teacher = Teacher.objects.get(id=id)
+    Update = modelformset_factory(Student,fields=('score',),form = UpdateScore,extra=0)
+    formset = Update(request.POST or None)
+    if formset.is_valid():
+        instances= formset.save(commit=False)
+        for instance in instances:
+            instance.user = request.user
+            instance.save()
+    return render(request,'pages/update.html',{'teacher':teacher,'formset':formset,'data':Student.objects.all()})

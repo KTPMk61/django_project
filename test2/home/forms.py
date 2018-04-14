@@ -22,3 +22,6 @@ class RegistrationForm(forms.Form):
 class LoginForm(forms.Form):
     username = forms.CharField(label = 'Tài khoản', max_length= 30)
     password =  forms.CharField(label= 'Mật khẩu',widget= forms.PasswordInput())
+class UpdateScore(forms.ModelForm):
+    score = forms.IntegerField(label='Điểm mới')
+

@@ -10,4 +10,5 @@ urlpatterns=[
     path('class/<int:id>/',views.viewclass),
     path('viewinf/<int:id>/',views.viewinf),
     path('viewclasst/<int:id>/',views.viewclasst),
+    path('update/<int:id>/',views.update)
 ]
