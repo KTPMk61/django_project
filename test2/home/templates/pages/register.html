@@ -1,30 +1,37 @@
 {% extends "pages/base.html" %}
-{% block title %} home {% endblock%}
+{% block title %} register {% endblock%}
 {% block content %}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <title>Register</title>
+    <title>Home</title>
 </head>
 <br>
 <div>
     <center>
-        <h1 style="font-size:60px">
-            Student Register
+        <h1 class = "page-header" style="font-size:60px">
+            ĐĂNG KÍ
         </h1>
     </center>
 </div>
-   <center>
-        <form action= '.' method='POST'>
-            {% csrf_token %}
-            {{form.as_p}}
-            <input type = "submit" value = "Đăng kí" />
-        </form>
-       {% for s in data%}
-            {{s.username}}
-            <br>
-       {% endfor%}
-   </center>
+<div>
+
+    <center>
+        <div class="bs-sliderbar">
+            <ul class="nav flex-cloumn">
+                <a href="/reg/student"><button><span class = "page-header" style = "font-size:30px">ĐĂNG KÍ CHO HỌC VIÊN</span></button></a>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <a href="/reg/teacher"><button><span class = "page-header" style = "font-size:30px">ĐĂNG KÍ CHO GIẢNG VIÊN</span></button></a>
+            </ul>
+
+    </center>
+        </div>
+    <br>
 </div>
 {% endblock %}}

@@ -11,7 +11,7 @@
 <div>
     <center>
         <h1 style="font-size:60px">
-            SISLITE APP
+            STUDENT REGISTRATIONS
         </h1>
     </center>
 </div>
@@ -19,12 +19,12 @@
         <form method='POST' action='.'>
             {% csrf_token %}
             {{form.as_p}}
-            <input type = "submit" style = "font-size:40px" value = "Đăng nhập" />
+            <input type = "submit" style = "font-size:40px" value = "Đăng Kí" />
         </form>
    </center>
 <br>
 <center>
-<a href="/register"><button><span class = "page-header" style = "font-size:40px">Đăng kí</span></button></a>
+<a href="/register"><button><span class = "page-header" style = "font-size:40px">Về trang trước</span></button></a>
 </center>
 </div>
 {% endblock %}}
