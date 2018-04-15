@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect,HttpResponse
-from .forms import RegistrationForm,LoginForm,UpdateScore
+from .forms import RegistrationForm,LoginForm,UpdateScore,UpdateScore1
 from django.forms.models import modelformset_factory
 from .models import Student,Teacher
 def index(request):
@@ -47,8 +47,7 @@ def login(request):
     return render(request,'pages/login.html',{'form': form})
 def viewscore(request,id):
     score = Student.objects.get(id =id)
-    form = ViewForm()
-    args ={'score':score,'form':form}
+    args ={'score':score}
     return render(request,'pages/viewscore.html',args)
 def viewclass(request,id):
     score = Student.objects.get(id=id)
@@ -63,11 +62,32 @@ def viewclasst(request,id):
     return render(request,'pages/viewclasst.html',data)
 def update(request,id):
     teacher = Teacher.objects.get(id=id)
-    Update = modelformset_factory(Student,fields=('score',),form = UpdateScore,extra=0)
+    if id == 1 :
+        return redirect('/KTPM/1')
+    elif id ==2:
+        return redirect('/SXTK/2')
+def KTPM(request,id):
+    teacher = Teacher.objects.get(id=id)
+    Update = modelformset_factory(Student, fields=["score",],labels={'score': 'DiemKTPM'}, extra=0)
     formset = Update(request.POST or None)
     if formset.is_valid():
-        instances= formset.save(commit=False)
+        instances = formset.save(commit=False)
         for instance in instances:
             instance.user = request.user
             instance.save()
-    return render(request,'pages/update.html',{'teacher':teacher,'formset':formset,'data':Student.objects.all()})
+    return render(request, 'pages/update.html', {'teacher': teacher, 'formset': formset, 'data': Student.objects.all()})
+def SXTK(request,id):
+    teacher = Teacher.objects.get(id=id)
+    field_list=['score1',]
+    Update = modelformset_factory(Student, fields=field_list,labels={'score1':'Diem SXTK'}, extra=0)
+    formset = Update(request.POST or None)
+    if formset.is_valid():
+        instances = formset.save(commit=False)
+        for instance in instances:
+            instance.user = request.user
+            instance.save()
+    return render(request, 'pages/update.html', {'teacher': teacher, 'formset': formset, 'data': Student.objects.all()})
+def teacherinf(request,id):
+    score = Student.objects.get(id=id)
+
+    return render(request,'pages/teacherinf.html',{'score':score,'teacher': Teacher.objects.all()})

@@ -24,4 +24,6 @@ class LoginForm(forms.Form):
     password =  forms.CharField(label= 'Mật khẩu',widget= forms.PasswordInput())
 class UpdateScore(forms.ModelForm):
     score = forms.IntegerField(label='Điểm mới')
+class UpdateScore1(forms.ModelForm):
+    score = forms.IntegerField(label= 'SXTK')
 

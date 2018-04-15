@@ -50,17 +50,18 @@
     <center>
         <div>
           <h1>
-            DANH SÁCH HỌC SINH HỌC LỚP :{{teacher.subject}}
-              <h3> Giảng Viên : {{teacher.fullname}}</h3>
-              <h3> Liên hệ : {{teacher.email}}</h3>
+            Thông tin sinh viên đăng nhập
+              <h3> Họ Tên : {{score.fullname}}</h3>
+               <h3> Khoa/vien : {{score.khoa}}</h3>
+              <h3> Liên hệ : {{score.email}}</h3>
           </h1>
         </div>
     </center>
 
   <div id="main">
       <article>
-          {% for s in data %}
-            <h3>Họ Và Tên :{{s.fullname}}   |    MSSV: {{s.sid}} </h3>
+          {% for s in teacher %}
+            <h3>Giảng viên:{{s.fullname}}   |    Giảng dạy Bộ môn: {{s.subject}} </h3>
         {% endfor %}
       </article>
     <nav>
@@ -74,9 +75,8 @@
                     {{form.as_p}}
                 {% endfor %}
             <br/>
-            <input type = "submit" style="font-size:30px" value = "Cập Nhật" />
         </form>
     </aside>
   </div>
-        <center><a href="/teacher/{{teacher.id}}"><button><span class = "page-header" style = "font-size:30px">Trở về trang trước</span></button></a></center>>
+        <center><a href="/student/{{score.id}}"><button><span class = "page-header" style = "font-size:30px">Trở về trang trước</span></button></a></center>>
 </body>

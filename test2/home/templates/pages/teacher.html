@@ -1,14 +1,21 @@
 {% extends "pages/base.html" %}
 {% block title %} student {% endblock%}
 {% block content %}
-<h1> CHƯƠNG TRÌNH DÀNH CHO GIẢNG VIÊN</h1>
-    <a href="/viewinf/{{teacher.id}}"><button><span class = "page-header" style = "font-size:30px">Xem Thong Tin Ca Nhan</span></button></a>
-    <br>
-    <a href="/"><button><span class = "page-header" style = "font-size:30px">Tim Kiem Sinh Vien(Theo ten vs mssv)</span></button></a>
-    <br><a href="/update/{{teacher.id}}"><button><span class = "page-header" style = "font-size:30px">Sua Diem</span></button></a>
-    <br>
-    <a href="/viewclasst/{{teacher.id}}"><button><span class = "page-header" style = "font-size:30px">Xem Danh Sach Lop Sinh vien</span></button></a>
-    <br>
-    <a href="/"><button><span class = "page-header" style = "font-size:30px">Tro lai trang chu</span></button></a>
+<center>
+    <h1> CHƯƠNG TRÌNH DÀNH CHO GIẢNG VIÊN</h1>
+
+</center>
+   <center>
+        <a href="/viewinf/{{teacher.id}}"><button><span class = "page-header" style = "font-size:30px">Xem thông tin cá nhân</span></button></a>
+    </br></br> </br>
+    <a href="/"><button><span class = "page-header" style = "font-size:30px">Tìm kiếm sinh viên theo tên </span></button></a>
+        </br> </br>
+    <br><a href="/update/{{teacher.id}}"><button><span class = "page-header" style = "font-size:30px">Sửa điểm cả lớp</span></button></a>
+    <br> </br> </br>
+    <a href="/viewclasst/{{teacher.id}}"><button><span class = "page-header" style = "font-size:30px">Xem Danh sách Lớp </span></button></a>
+    <br> </br> </br>
+    <a href="/"><button><span class = "page-header" style = "font-size:30px">Quay lại tang chủ</span></button></a>
+        </br> </br>
+   </center>
 
 {% endblock %}}
