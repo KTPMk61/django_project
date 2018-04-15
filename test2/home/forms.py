@@ -17,7 +17,7 @@ class RegistrationForm(forms.Form):
         khoa = self.cleaned_data['khoa']
         email = self.cleaned_data['email']
         bir = self.cleaned_data['bir']
-        s = Student(username = username, password = password, fullname= fullname,score= 0,sid= sid,khoa= khoa,bir=bir,email= email)
+        s = Student(username = username, password = password, fullname= fullname,score= 0,score1=0,score2=0,score3=0,sid= sid,khoa= khoa,bir=bir,email= email)
         s.save()
 class LoginForm(forms.Form):
     username = forms.CharField(label = 'Tài khoản', max_length= 30)
@@ -26,4 +26,8 @@ class UpdateScore(forms.ModelForm):
     score = forms.IntegerField(label='Điểm mới')
 class UpdateScore1(forms.ModelForm):
     score = forms.IntegerField(label= 'SXTK')
+class Search(forms.Form):
+    fullname= forms.CharField(label = 'Tên Sinh Viên',max_length=30)
+    sid = forms.CharField(label='MSSV',max_length=30)
+
 

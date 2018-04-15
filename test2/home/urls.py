@@ -14,4 +14,5 @@ urlpatterns=[
     path('KTPM/<int:id>/',views.KTPM),
     path('SXTK/<int:id>/',views.SXTK),
     path('teacherinf/<int:id>/',views.teacherinf),
+    path('searchst/<int:id>/',views.searchst)
 ]

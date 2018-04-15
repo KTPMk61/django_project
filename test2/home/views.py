@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponseRedirect,HttpResponse
-from .forms import RegistrationForm,LoginForm,UpdateScore,UpdateScore1
+from .forms import RegistrationForm,LoginForm,Search
 from django.forms.models import modelformset_factory
 from .models import Student,Teacher
 def index(request):
@@ -91,3 +91,16 @@ def teacherinf(request,id):
     score = Student.objects.get(id=id)
 
     return render(request,'pages/teacherinf.html',{'score':score,'teacher': Teacher.objects.all()})
+def searchst(request,id):
+    teacher=Teacher.objects.get(id=id)
+    form= Search()
+    if request.method=='POST':
+        form = Search(request.POST)
+        if form.is_valid():
+            student= Student.objects.all()
+            for s in student:
+                if s.fullname==form.cleaned_data['fullname'] and s.sid == form.cleaned_data['sid']:
+                    score = Student.objects.get(id=s.id)
+                    return render(request,'pages/result.html',{'score':score,'teacher':teacher})
+
+    return render(request,'pages/searchst.html',{'teacher':teacher,'form':form})
