@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .forms import *
 from .models import *
+from django.forms.models import modelformset_factory
 def home(request):
     form = LoginForm()
     if request.method == 'POST':
@@ -127,3 +128,154 @@ def viewclass(request,idCls,id):
         data = Student3.objects.all()
         score = Student3.objects.get(id=id)
     return render(request, 'pages/viewclass.html', {'score': score,'data':data})
+def update(request,idCls,id):
+    teacher = Teacher.objects.get(id=id)
+    if idCls==1:
+        if teacher.idSub ==1:
+            data = Student.objects.all()
+            Update = modelformset_factory(Student, fields=["score", ], labels={'score': 'DiemKTPM'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==2:
+            data = Student.objects.all()
+            Update = modelformset_factory(Student, fields=["score1", ], labels={'score1': 'Điểm Math4'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==3:
+            data = Student.objects.all()
+            Update = modelformset_factory(Student, fields=["score2", ], labels={'score2': 'Điểm SXTK'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==4:
+            data = Student.objects.all()
+            Update = modelformset_factory(Student, fields=["score3", ], labels={'score3': 'Toan Roi Rac'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+    if idCls==2:
+        if teacher.idSub ==1:
+            data = Student1.objects.all()
+            Update = modelformset_factory(Student1, fields=["score", ], labels={'score': 'DiemKTPM'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==2:
+            data = Student1.objects.all()
+            Update = modelformset_factory(Student1, fields=["score1", ], labels={'score1': 'Điểm Math4'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==3:
+            data = Student1.objects.all()
+            Update = modelformset_factory(Student1, fields=["score2", ], labels={'score2': 'Điểm SXTK'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==4:
+            data = Student1.objects.all()
+            Update = modelformset_factory(Student1, fields=["score3", ], labels={'score3': 'Toan Roi Rac'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+    if idCls==3:
+        if teacher.idSub ==1:
+            data = Student2.objects.all()
+            Update = modelformset_factory(Student2, fields=["score", ], labels={'score': 'DiemKTPM'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==2:
+            data = Student2.objects.all()
+            Update = modelformset_factory(Student2, fields=["score1", ], labels={'score1': 'Điểm Math4'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==3:
+            data = Student2.objects.all()
+            Update = modelformset_factory(Student2, fields=["score2", ], labels={'score2': 'Điểm SXTK'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==4:
+            data = Student2.objects.all()
+            Update = modelformset_factory(Student2, fields=["score3", ], labels={'score3': 'Toan Roi Rac'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+    if idCls==4:
+        if teacher.idSub ==1:
+            data = Student3.objects.all()
+            Update = modelformset_factory(Student3, fields=["score", ], labels={'score': 'DiemKTPM'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==2:
+            data = Student3.objects.all()
+            Update = modelformset_factory(Student3, fields=["score1", ], labels={'score1': 'Điểm Math4'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==3:
+            data = Student3.objects.all()
+            Update = modelformset_factory(Student3, fields=["score2", ], labels={'score2': 'Điểm SXTK'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+        if teacher.idSub ==4:
+            data = Student3.objects.all()
+            Update = modelformset_factory(Student3, fields=["score3", ], labels={'score3': 'Toan Roi Rac'}, extra=0)
+            formset = Update(request.POST or None)
+            if formset.is_valid():
+                instances = formset.save(commit=False)
+                for instance in instances:
+                    instance.user = request.user
+                    instance.save()
+    return render(request,'pages/KTPM.html',{'teacher':teacher,'data':data,'formset':formset})

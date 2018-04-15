@@ -9,4 +9,5 @@ urlpatterns=[
     path('student/<int:idCls>/<int:id>/',views.student),
     path('studentinf/<int:idCls>/<int:id>/', views.studentinf),
     path('studentclass/<int:idCls>/<int:id>/', views.viewclass),
+    path('update/<int:idCls>/<int:id>/',views.update),
 ]
