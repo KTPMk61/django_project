@@ -81,3 +81,25 @@ def regt(request):
             form.save()
             return render(request, 'pages/sucess.html')
     return render(request,'pages/teacherreg.html',{'form':form})
+def teacherinf(request,idCls,id):
+    teacher= Teacher.objects.all()
+    if idCls==1:
+        score = Student.objects.get(id=id)
+    if idCls == 2:
+        score = Student1.objects.get(id=id)
+    if idCls == 3:
+        score = Student2.objects.get(id=id)
+    if idCls == 4:
+        score = Student3.objects.get(id=id)
+    return render(request,'pages/teacherinf.html',{'teacher':teacher,'score':score})
+def student(request,idCls,id):
+    teacher = Teacher.objects.all()
+    if idCls == 1:
+        score = Student.objects.get(id=id)
+    if idCls == 2:
+        score = Student1.objects.get(id=id)
+    if idCls == 3:
+        score = Student2.objects.get(id=id)
+    if idCls == 4:
+        score = Student3.objects.get(id=id)
+    return render(request, 'pages/student.html', {'teacher': teacher, 'score': score})
