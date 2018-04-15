@@ -5,10 +5,13 @@
     <h3>Họ Và Tên :{{score.fullname}}</h3>
     <h3>MSSV: {{score.sid}}</h3>
     <h3>Khoa/Viện :{{score.khoa}}</h3>
+    <h3>Lớp :{{score.cls}}</h3>
     <h3>Ngày Sinh : {{score.bir|date:"d/m/Y"}}</h3>
     <h3>Điểm KTPM : {{score.score}}</h3>
-    <h4>Điểm SXTK : {{score.score1}}</h4>
+    <h3>Điểm Math4 : {{score.score}}</h3>
+    <h4>Điểm SXTK : {{score.score2}}</h4>
+    <h3>Điểm TRR : {{score.score3}}</h3>
 </center>
 
-<center><a href="/teacher/{{teacher.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
+<center><a href="/teacher/{{teacher.idCls}}/{{teacher.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
 {% endblock %}}

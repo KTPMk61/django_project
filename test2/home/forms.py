@@ -66,3 +66,6 @@ class TeacherRegisterForm(forms.Form):
                 index1 = s1.id
         a = Teacher(username = username, password = password, email = email,fullname= fullname,khoa= khoa,subject=subject,cls=cls,idCls=index,idSub=index1)
         a.save()
+class Search(forms.Form):
+    fullname= forms.CharField(label = 'Tên Sinh Viên',max_length=30)
+    sid = forms.CharField(label='MSSV',max_length=30)

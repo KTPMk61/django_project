@@ -3,6 +3,9 @@
 {% block content %}
 <center>
     <h3>Họ Và Tên :{{teacher.fullname}}</h3>
+    <h3>Giảng dạy môn :{{teacher.subject}}</h3>
+    <h3>Khoa/viện:{{teacher.khoa}}</h3>
+    <h3>Email/SDT :{{teacher.email}}</h3>
 </center>
-<center><a href="/teacher/{{teacher.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
+<center><a href="/teacher/{{teacher.idCls}}/{{teacher.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
 {% endblock %}}

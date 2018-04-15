@@ -279,3 +279,48 @@ def update(request,idCls,id):
                     instance.user = request.user
                     instance.save()
     return render(request,'pages/KTPM.html',{'teacher':teacher,'data':data,'formset':formset})
+def teacher(request,idCls,id):
+    teacher= Teacher.objects.get(id=id)
+    return render(request, 'pages/teacher.html', {'teacher': teacher,})
+def viewinf(request,idCls,id):
+    teacher = Teacher.objects.get(id=id)
+    return render(request,'pages/viewinf.html',{'teacher':teacher})
+def search(request,idCls,id):
+    teacher = Teacher.objects.get(id=id)
+    student = Student.objects.all()
+    student1 = Student1.objects.all()
+    student2 = Student2.objects.all()
+    student3 = Student3.objects.all()
+    form = Search()
+    if request.method == 'POST':
+        form = Search(request.POST)
+        if form.is_valid():
+            for s in student:
+                if s.fullname == form.cleaned_data['fullname'] and s.sid == form.cleaned_data['sid']:
+                    score = Student.objects.get(id=s.id)
+                    return render(request, 'pages/result.html', {'score': score, 'teacher': teacher})
+            for s in student1:
+                if s.fullname == form.cleaned_data['fullname'] and s.sid == form.cleaned_data['sid']:
+                    score = Student.objects.get(id=s.id)
+                    return render(request, 'pages/result.html', {'score': score, 'teacher': teacher})
+            for s in student2:
+                if s.fullname == form.cleaned_data['fullname'] and s.sid == form.cleaned_data['sid']:
+                    score = Student.objects.get(id=s.id)
+                    return render(request, 'pages/result.html', {'score': score, 'teacher': teacher})
+            for s in student3:
+                if s.fullname == form.cleaned_data['fullname'] and s.sid == form.cleaned_data['sid']:
+                    score = Student.objects.get(id=s.id)
+                    return render(request, 'pages/result.html', {'score': score, 'teacher': teacher})
+    return render(request, 'pages/searchst.html', {'teacher': teacher, 'form': form})
+
+def viewclasst(request,idCls,id):
+    teacher= Teacher.objects.get(id=id)
+    if idCls == 1:
+        data = Student.objects.all()
+    if idCls == 2:
+        data = Student1.objects.all()
+    if idCls == 3:
+        data = Student2.objects.all()
+    if idCls == 4:
+        data = Student3.objects.all()
+    return render(request,'pages/viewclasst.html',{'teacher':teacher,'data':data})
