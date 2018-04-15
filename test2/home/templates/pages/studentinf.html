@@ -52,10 +52,14 @@
           <h1>
             Thông tin sinh viên đăng nhập
               <h3> Họ Tên : {{score.fullname}}</h3>
-
+              <h3>Mssv : {{score.sid}}</h3>
                <h3 > Khoa/vien : {{score.khoa}}</h3>
               <h3> Lớp :{{score.cls}}</h3>
               <h3> Liên hệ : {{score.email}}</h3>
+              <h3> Điểm KTPM :{{score.score1}}</h3>
+              <h3> Điểm SXTK :{{score.score2}}</h3>
+              <h3> Điểm MATH$ :{{score.score3}}</h3>
+              <h3> Điểm TRR :{{score.score4}}</h3>
           </h1>
         </div>
     </center>
@@ -63,7 +67,7 @@
   <div id="main">
       <article>
           <h1>
-              Giảng Viên Dạy Lớp Của Bạn
+
           </h1>
           {% for s in teacher %}
             {% if s.idCls is score.idCls %}

@@ -6,5 +6,7 @@ urlpatterns=[
     path('reg/student/',views.regs),
     path('reg/teacher/',views.regt),
     path('teacherinf/<int:idCls>/<int:id>/',views.teacherinf),
-    path('student/<int:idCls>/<int:id>/',views.student)
+    path('student/<int:idCls>/<int:id>/',views.student),
+    path('studentinf/<int:idCls>/<int:id>/', views.studentinf),
+    path('studentclass/<int:idCls>/<int:id>/', views.viewclass),
 ]
