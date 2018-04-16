@@ -5,6 +5,7 @@ CLS = (('Việt Nhật A', 'Việt Nhật A'), ('Việt Nhật B', 'Việt Nhậ
 SUB = (('Kĩ Thuật Phần Mềm', 'Kĩ Thuật Phần Mềm'), ('Xác Suất Thống Kê', 'Xác Suất Thống Kê'), ('Math 4', 'Math 4'),
        ('Toán Rời Rạc', 'Toán Rời Rạc'))
 class Student(models.Model):
+    username = models.CharField(max_length=20)
     password = models.CharField(max_length=20)
     fullname = models.CharField(max_length= 100)
     cls = models.CharField(max_length=30, choices=CLS)
