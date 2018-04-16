@@ -1,5 +1,10 @@
 from django import forms
 from .models import *
+
+CLS = (('Việt Nhật A', 'Việt Nhật A'), ('Việt Nhật B', 'Việt Nhật B'), ('Việt Nhật C', 'Việt Nhật C'),
+       ('Việt Nhật D', 'Việt Nhật D'))
+SUB = (('Kĩ Thuật Phần Mềm', 'Kĩ Thuật Phần Mềm'), ('Xác Suất Thống Kê', 'Xác Suất Thống Kê'), ('Math 4', 'Math 4'),
+       ('Toán Rời Rạc', 'Toán Rời Rạc'))
 class LoginForm(forms.Form):
     username = forms.CharField(label = 'Tài khoản', max_length= 30)
     password =  forms.CharField(label= 'Mật khẩu',widget= forms.PasswordInput())
@@ -8,7 +13,7 @@ class StudentRegisterForm(forms.Form):
     sid = forms.CharField(label='MSSV', max_length=30)
     khoa = forms.CharField(label='Khoa/Vien',max_length=30)
     email = forms.CharField(label='Emails/SDT',max_length=30)
-    cls = forms.CharField(label='Lớp:', max_length=30)
+    cls = forms.ChoiceField(label="Lớp :", choices=CLS, initial='', widget=forms.Select(), required=False)
     bir = forms.DateTimeField(label='Ngay Sinh',input_formats=['%d/%m/%Y'])
     username = forms.CharField(label = 'Tài khoản', max_length= 30)
     password =  forms.CharField(label= 'Mật khẩu',widget= forms.PasswordInput())
@@ -38,12 +43,14 @@ class StudentRegisterForm(forms.Form):
         if index==4:
             a = Student3(username = username, password = password, fullname= fullname,score= 0,score1=0,score2=0,score3=0,score4=0,sid= sid,khoa= khoa,bir=bir,email= email,idCls=4,idSub=0,cls=cls)
             a.save()
+
 class TeacherRegisterForm(forms.Form):
+
     fullname = forms.CharField(label = 'Họ Tên', max_length= 30)
-    subject = forms.CharField(label='Môn Giảng Dạy', max_length=30)
+    subject = forms.ChoiceField(label="Môn Giảng Dạy",choices=SUB, initial='',widget=forms.Select(),required= False)
     khoa = forms.CharField(label='Khoa/Vien',max_length=30)
     email = forms.CharField(label='Emails/SDT',max_length=30)
-    cls = forms.CharField(label='Lớp Giảng Dạy:', max_length=30)
+    cls = forms.ChoiceField(label="Lớp Giảng Dạy",choices=CLS, initial='',widget=forms.Select(),required= False)
     username = forms.CharField(label = 'Tài khoản', max_length= 30)
     password =  forms.CharField(label= 'Mật khẩu',widget= forms.PasswordInput())
     def save(self):
