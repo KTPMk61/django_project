@@ -1,0 +1,14 @@
+{% extends "pages/base.html" %}
+{% block title %} student {% endblock%}
+{% block content %}
+<center>
+    {% for s in data %}
+    {{s.id}}:<br>
+    <h3>Họ Và Tên :{{s.fullname}}</h3>
+    <h3>MSSV: {{s.sid}}</h3>
+    <h3>Khoa/Viện :{{s.khoa}}</h3>
+    <h3>Ngày Sinh : {{s.bir|date:"d/m/Y"}}</h3>
+    {% endfor %}
+</center>
+<center><a href="/student/{{score.idCls}}/{{score.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
+{% endblock %}}
