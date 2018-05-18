@@ -53,3 +53,63 @@ def teacherview(request,idA,idS):
     lectcls = lecturer_class.objects.all()
     teach = lecturer.objects.all()
     return render(request, 'pages/teacherinf.html', {'acc': a, 'student': s,'stclass':cls,'lectclass':lectcls,'teacher':teach})
+def viewclass(request,idA,idS):
+    a = acount.objects.get(id=idA)
+    s = student.objects.get(id=idS)
+    cls = student_class.objects.all()
+    clsname = grade.objects.all()
+    return render(request, 'pages/viewclass.html', {'acc': a, 'student': s,'stcls':cls,'clsname':clsname})
+def memcls(request,idA,idS,idC):
+    a = acount.objects.get(id=idA)
+    s = student.objects.get(id=idS)
+    c = grade.objects.get(idcls=idC)
+    data= student.objects.all()
+    cls = student_class.objects.all()
+    return render(request, 'pages/viewmem.html', {'acc': a, 'student': s,'class':c ,'stcls': cls,'data':data})
+def teacher(request,idA,idT):
+    a = acount.objects.get(id=idA)
+    t = lecturer.objects.get(id=idT)
+    return render(request, 'pages/teacher.html', {'acc': a, 'teacher': t})
+def viewinfteacher(request,idA,idT):
+    a = acount.objects.get(id=idA)
+    t = lecturer.objects.get(id=idT)
+    return render(request,'pages/viewinf.html',{'acc':a,'teacher':t})
+def creatclass(request,idA,idT):
+    idclass = 0
+    check = 0
+    idclass1 = 1
+    a = acount.objects.get(id=idA)
+    t = lecturer.objects.get(id=idT)
+    st = student.objects.all()
+    form = CreatClass()
+    clas = grade.objects.all()
+    data = subject.objects.all()
+    if request.method =='POST':
+        form = CreatClass(request.POST)
+        if form.is_valid():
+            subname = form.cleaned_data['subname']
+            subcode = form.cleaned_data['subcode']
+            clsname = form.cleaned_data['classname']
+            for s in clas:
+                check=check+1
+                if s.name != clsname:
+                    idclass=idclass+1
+            if check==idclass and check!=0:
+                for s1 in clas:
+                    idclass1 = idclass1 + 1
+                for s2 in data:
+                    if s2.subject_code == subcode:
+                        subjectId = s2.subjectId
+                sub = grade(idcls=idclass1, name=clsname, subjectId=subjectId)
+                sub.save()
+                #return render(request, 'pages/addmem.html', {'acc': a, 'teacher': t,'student':st})
+            if check==0:
+                for s2 in data:
+                    if s2.subject_code == subcode:
+                        subjectId= s2.subjectId
+                sub = grade(idcls=idclass1, name=clsname, subjectId=subjectId)
+                sub.save()
+                #return render(request,'pages/addmem.html',{'acc': a, 'teacher': t,'student':st})
+            if idclass<check :
+                return render(request,'pages/failcreate.html',{'acc': a, 'teacher': t,'form':form})
+    return render(request, 'pages/creatclass.html', {'acc': a, 'teacher': t,'form':form})

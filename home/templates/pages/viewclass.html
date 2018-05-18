@@ -2,13 +2,16 @@
 {% block title %} student {% endblock%}
 {% block content %}
 <center>
-    {% for s in data %}
-    {{s.id}}:<br>
-    <h3>Họ Và Tên :{{s.fullname}}</h3>
-    <h3>MSSV: {{s.sid}}</h3>
-    <h3>Khoa/Viện :{{s.khoa}}</h3>
-    <h3>Ngày Sinh : {{s.bir|date:"d/m/Y"}}</h3>
+    <h1>Các lớp mà bạn đang theo học</h1>
+    {% for s in stcls %}
+        {% if s.student is student.id %}
+            {% for s1 in clsname %}
+                {% if s1.idcls is s.classId %}
+                    <center><a href="/memcls/{{acc.id}}/{{student.id}}/{{s.classId}}"><button><span class = "page-header" style = "font-size:10px">{{s1.name}}</span></button></a></center>
+                {% endif%}
+            {% endfor %}
+        {% endif %}
     {% endfor %}
 </center>
-<center><a href="/student/{{score.idCls}}/{{score.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
+<center><a href="/student_home/{{acc.id}}/{{student.id}}/"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>
 {% endblock %}}

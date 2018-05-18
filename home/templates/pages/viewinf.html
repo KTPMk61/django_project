@@ -2,10 +2,10 @@
 {% block title %} student {% endblock%}
 {% block content %}
 <center>
-    <h3>Họ Và Tên :{{teacher.fullname}}</h3>
-    <h3>Giảng dạy môn :{{teacher.subject}}</h3>
-    <h3>Khoa/viện:{{teacher.khoa}}</h3>
-    <h3>Email/SDT :{{teacher.email}}</h3>
+    <h3>Họ Và Tên :{{teacher.name}}</h3>
+    <h3>Khoa/viện:{{teacher.institute}}</h3>
+    <h3>Email/SDT :{{teacher.phone_mail}}</h3>
+    <h3>Birthday:{{teacher.birthday}}</h3>
 </center>
-<center><a href="/teacher/{{teacher.idCls}}/{{teacher.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
+<center><a href="/teacher/{{acc.id}}/{{teacher.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>>
 {% endblock %}}

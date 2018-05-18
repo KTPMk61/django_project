@@ -11,7 +11,7 @@
 <div>
     <center>
         <h1 style="font-size:60px">
-            Tìm Kiếm Sinh Viên
+            SISLITE APP
         </h1>
     </center>
 </div>
@@ -19,12 +19,11 @@
         <form method='POST' action='.'>
             {% csrf_token %}
             {{form.as_p}}
-            <input type = "submit" value = "Tìm" />
+            <input type = "submit" style = "font-size:40px" value = "Tạo" />
         </form>
    </center>
 <br>
-<center>
-<a href="/teacher/{{teacher.idCls}}/{{teacher.id}}"><button><span class = "page-header" style = "font-size:40px">Back</span></button></a>
-</center>
+
+<center><a href="/teacher/{{acc.id}}/{{teacher.id}}"><button><span class = "page-header" style = "font-size:10px">Tro ve trang truoc</span></button></a></center>
 </div>
 {% endblock %}}
