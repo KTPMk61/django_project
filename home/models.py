@@ -17,8 +17,9 @@ class lecturer_class(models.Model):
 class point(models.Model):
     studentId=models.IntegerField()
     subjectId=models.IntegerField()
-    point= models.FloatField()
-    point2=models.FloatField(default=0)
+    classId=models.IntegerField()
+    point= models.FloatField(null=True)
+    point2=models.FloatField(null=True)
 class student_class(models.Model):
     classId=models.IntegerField(default=0)
     student=models.IntegerField(default=0)
@@ -31,5 +32,4 @@ class student(models.Model):
     mssv= models.CharField(max_length=50)
     email= models.CharField(max_length=50)
     student_class = models.CharField(max_length=50)
-    password = models.CharField(max_length=50)
 # Create your models here.

@@ -11,4 +11,7 @@ urlpatterns=[
     path('viewinft/<int:idA>/<int:idT>/',views.viewinfteacher),
     path('teacher/<int:idA>/<int:idT>/',views.teacher),
     path('creatclass/<int:idA>/<int:idT>/',views.creatclass),
+    path('addmem/<int:idA>/<int:idT>/<int:idC>/<int:idS>/',views.addmem),
+    path('updatescore/<int:idA>/<int:idT>/<int:idC>/<int:idS>/',views.updatescore),
+    path('viewclasst/<int:idA>/<int:idT>/',views.viewclasst),
 ]
